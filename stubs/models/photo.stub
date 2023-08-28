@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+
+class $controllerPhotos extends Model
+{
+    public function $name()
+    {
+        $this->belongsTo($controller::class);
+    }
+    protected $guarded = [];
+    public $timestamps = [];
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logAll();
+    }
+}
