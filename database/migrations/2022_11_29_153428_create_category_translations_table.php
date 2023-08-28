@@ -12,9 +12,6 @@ return new class extends Migration {
             $table->foreignId('category_id')->unsigned();
             $table->string('locale')->index();
             $table->string('name');
-            $table->longText('description')->nullable();
-            $table->longText('meta_title')->nullable();
-            $table->longText('meta_description')->nullable();
             $table->unique(['category_id', 'locale']);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

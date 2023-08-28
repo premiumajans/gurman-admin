@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth:admin', 'as' => 'backend.'], function () {
     });
     Route::get('delete/photo/{model}/{id}', [App\Http\Controllers\Backend\HomeController::class, 'deletePhoto'])->name('deletePhoto');
     Route::group(['name' => 'status'], function () {
+Route::get('product/{id}/change-status',[App\Http\Controllers\Backend\ProductController::class,'status'])->name('productStatus');
+
 Route::get('gallery/{id}/change-status',[App\Http\Controllers\Backend\GalleryController::class,'status'])->name('galleryStatus');
 
         Route::get('meta/{id}/change-status', [App\Http\Controllers\Backend\MetaController::class, 'status'])->name('metaStatus');
@@ -41,6 +43,8 @@ Route::get('gallery/{id}/change-status',[App\Http\Controllers\Backend\GalleryCon
         })->name('permissionsStatus');
     });
     Route::group(['name' => 'delete'], function () {
+Route::get('product/{id}/delete',[App\Http\Controllers\Backend\ProductController::class,'delete'])->name('productDelete');
+
 Route::get('gallery/{id}/delete',[App\Http\Controllers\Backend\GalleryController::class,'delete'])->name('galleryDelete');
 
         Route::get('meta/{id}/delete', [App\Http\Controllers\Backend\MetaController::class, 'delete'])->name('metaDelete');
@@ -64,6 +68,8 @@ Route::get('gallery/{id}/delete',[App\Http\Controllers\Backend\GalleryController
         Route::get('/newsletter/{id}/delete', [App\Http\Controllers\Backend\NewsletterController::class, 'delNewsletter'])->name('delNewsletter');
     });
     Route::group(['name' => 'resource'], function () {
+Route::resource('/product',App\Http\Controllers\Backend\ProductController::class);
+
 Route::resource('/gallery',App\Http\Controllers\Backend\GalleryController::class);
 
         Route::resource('/meta', App\Http\Controllers\Backend\MetaController::class);

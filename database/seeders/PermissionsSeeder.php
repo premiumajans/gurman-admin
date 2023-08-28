@@ -22,7 +22,7 @@ class PermissionsSeeder extends Seeder
             'partner',
             'faq',
             'meta',
-
+            'product',
             'gallery',
 
         ];

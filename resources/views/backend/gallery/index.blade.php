@@ -26,9 +26,8 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>@lang('backend.name'):</th>
+                                <th>@lang('backend.photo'):</th>
                                 <th>@lang('backend.time'):</th>
-                                <th>@lang('backend.photos'):</th>
                                 <th>@lang('backend.actions'):</th>
                             </tr>
                             </thead>
@@ -36,13 +35,8 @@
                             @foreach($gallerys as $gallery)
                                 <tr>
                                     <td>{{ $gallery->id }}</td>
-                                    <td>{{ $gallery->translate('az')->name ?? __('backend.translation-not-found') }}</td>
+                                    <td><img src="{{ asset($gallery->photo) }}" style="width: 60px;height: 90px;"></td>
                                     <td>{{ date('d.m.Y H:i:s',strtotime($gallery->created_at)) }}</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary"
-                                           href="{{ route('backend.gallery.photos',['id'=>$gallery->id]) }}"><i
-                                                class="fas fa-images"></i></a>
-                                    </td>
                                     @include('backend.templates.components.dt-settings',['variable' => 'gallery','value' => $gallery])
                                 </tr>
                             @endforeach

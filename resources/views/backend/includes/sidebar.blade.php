@@ -18,11 +18,11 @@
                         </a>
                     </li>
                 @endcan
-                @can('content index')
+                @can('product index')
                     <li>
-                        <a href="{{ route('backend.content.index') }}" class="waves-effect">
+                        <a href="{{ route('backend.product.index') }}" class="waves-effect">
                             <i class="fas fa-file"></i>
-                            <span>@lang('backend.content')</span>
+                            <span>@lang('backend.product')</span>
                         </a>
                     </li>
                 @endcan

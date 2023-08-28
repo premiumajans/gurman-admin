@@ -11,7 +11,7 @@ class MainModel extends Command
     protected $signature = 'main-model {model}';
     protected $description = '';
 
-    public function handle()
+    public function handle(): void
     {
         $controllerName = $this->argument('model');
         $controllerPath = app_path('Models/' . $controllerName . '.php');

@@ -41,46 +41,9 @@
                                                                placeholder="@lang('backend.name')">
                                                         {!! validation_response('backend.name') !!}
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label>@lang('backend.description')</label>
-                                                        <textarea name="description[{{ $lan->code }}]"
-                                                                  id="elm{{$lan->code}}1"
-                                                                  class="form-control"
-                                                                  placeholder="@lang('backend.description')"></textarea>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label>@lang('backend.title')(Meta)</label>
-                                                        <textarea name="meta_title[{{ $lan->code }}]"
-                                                                  rows="2"
-                                                                  class="form-control"
-                                                                  placeholder="@lang('backend.title')(Meta)"></textarea>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label>@lang('backend.description')(Meta)</label>
-                                                        <textarea name="meta_description[{{ $lan->code }}]"
-                                                                  rows="6"
-                                                                  class="form-control"
-                                                                  placeholder="@lang('backend.description')(Meta)"></textarea>
-                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
-                                        <div class="mb-3">
-                                            <label>@lang('backend.slug') <span class="text-danger">*</span></label>
-                                            <input name="slug" type="text" id="slug" class="form-control" required
-                                                   placeholder="/news">
-                                            {!! validation_response('backend.slug') !!}
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>@lang('backend.parent') @lang('backend.category')</label>
-                                            <select name="parent" type="text" class="form-control">
-                                                <option value="">-</option>
-                                                @foreach($categories as $category)
-                                                    <option
-                                                        value="{{ $category->id }}">{{ $category->translate(app()->getLocale())->name ?? __('backend.translation-not-found') }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-5 text-center">
