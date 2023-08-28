@@ -30,25 +30,14 @@ class CategoryController extends Controller
     {
         check_permission('categories create');
         try {
-            if ($request->has('parent')) {
-                $parentCategory = Category::find($request->parent);
-                $category = new Category();
-                $category->slug = $request->slug;
-                $parentCategory->subcategories()->save($category);
-            } else {
-                $category = new Category();
-                $category->slug = $request->slug;
-                $category->save();
-            }
-            $category->is_home = $request->has('is_home') ? 1 : 0;
+            $category = new Category();
+            $category->slug = $request->slug;
+            $category->save();
             foreach (active_langs() as $lang) {
                 $translation = new CategoryTranslation();
                 $translation->locale = $lang->code;
                 $translation->category_id = $category->id;
                 $translation->name = $request->name[$lang->code];
-                $translation->description = $request->description[$lang->code];
-                $translation->meta_title = $request->meta_title[$lang->code];
-                $translation->meta_description = $request->meta_description[$lang->code];
                 $translation->save();
             }
             alert()->success(__('messages.success'));
@@ -77,13 +66,7 @@ class CategoryController extends Controller
             DB::transaction(function () use ($request, $category) {
                 foreach (active_langs() as $lang) {
                     $category->translate($lang->code)->name = $request->name[$lang->code];
-                    $category->translate($lang->code)->description = $request->description[$lang->code];
-                    $category->translate($lang->code)->meta_description = $request->meta_description[$lang->code];
-                    $category->translate($lang->code)->meta_title = $request->meta_title[$lang->code];
                 }
-                $category->is_home = $request->has('is_home') ? 1 : 0;
-                $category->parent_id = $request->parent;
-                $category->slug = $request->slug;
                 $category->save();
             });
             alert()->success(__('messages.success'));

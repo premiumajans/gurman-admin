@@ -10,18 +10,18 @@ class GalleryController extends Controller
     public function index()
     {
         if (Gallery::where('status', 1)->exists()) {
-            return response()->json(['gallery' => Gallery::where('status', 1)->with('photos')->get()], 200);
+            return response()->json(Gallery::where('status', 1)->get(), 200);
         } else {
-            return response()->json(['gallery' => 'Gallery-is-empty'], 404);
+            return response()->json(['message' => 'Gallery-is-empty'], 404);
         }
     }
 
     public function show($id)
     {
         if (Gallery::where('status', 1)->where('id', $id)->exists()) {
-            return response()->json(['gallery' => Gallery::where('status', 1)->where('id', $id)->with('photos')->first()], 200);
+            return response()->json(Gallery::where('status', 1)->where('id', $id)->first(), 200);
         } else {
-            return response()->json(['gallery' => 'gallery-is-not-founded'], 404);
+            return response()->json(['message' => 'gallery-is-not-founded'], 404);
         }
     }
 }

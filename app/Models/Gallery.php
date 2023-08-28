@@ -11,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Gallery extends Model
 {
-    use Translatable, LogsActivity;
+    use LogsActivity;
 
     protected $guarded = [];
 

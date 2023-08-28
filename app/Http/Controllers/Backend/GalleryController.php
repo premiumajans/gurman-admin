@@ -54,11 +54,11 @@ class GalleryController extends Controller
         try {
             $gallery = Gallery::where('id', $id)->first();
             DB::transaction(function () use ($request, $gallery) {
-                if($request->hasFile('photo')){
-                    if(file_exists($gallery->photo)){
+                if ($request->hasFile('photo')) {
+                    if (file_exists($gallery->photo)) {
                         unlink(public_path($gallery->photo));
                     }
-                $gallery->photo = upload('gallery',$request->file('photo'));
+                    $gallery->photo = upload('gallery', $request->file('photo'));
                 }
                 $gallery->save();
             });
