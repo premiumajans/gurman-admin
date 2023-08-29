@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Helpers\CRUDHelper;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
+use App\Models\Product;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        dd(Product::where('status',1)->get());
         return view('backend.dashboard');
     }
 

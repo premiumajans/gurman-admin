@@ -20,13 +20,30 @@
                                                  id="{{ $lan->code }}"
                                                  role="tabpanel">
                                                 <div class="form-group row">
-                                                    @include('backend.templates.items.create.validations.name')
-                                                    @include('backend.templates.items.create.validations.description')
+                                                    <div class="mb-3">
+                                                        <label>@lang('backend.name')</label>
+                                                        <input name="name[{{ $lan->code }}]" type="text"
+                                                               class="form-control" placeholder="@lang('backend.name')">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label>@lang('backend.description')</label>
+                                                        <textarea name="description[{{ $lan->code }}]" type="text"
+                                                                  class="form-control" id="elm{{$lan->code}}1"
+                                                                  placeholder="@lang('backend.description')"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                         @include('backend.templates.items.create.validations.photo')
-                                        @include('backend.templates.items.create.validations.photos')
+                                        <div class="mb-3">
+                                            <label>@lang('backend.category')</label>
+                                            <select name="category_id" class="form-control">
+                                                @foreach($categories as $category)
+                                                    <option
+                                                        value="{{ $category->id }}">{{ $category->translate(app()->getLocale())->name ?? '' }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 @include('backend.templates.components.buttons')
