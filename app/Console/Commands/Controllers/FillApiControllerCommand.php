@@ -10,7 +10,7 @@ class FillApiControllerCommand extends Command
 {
     protected $signature = 'fill-api-controller {controller}';
     protected $description = '';
-    public function handle()
+    public function handle(): void
     {
         $controllerName = $this->argument('controller');
         $controllerPath = app_path('Http/Controllers/Api/' . $controllerName . 'Controller.php');

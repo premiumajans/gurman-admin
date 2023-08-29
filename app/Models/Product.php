@@ -16,6 +16,11 @@ class Product extends Model implements TranslatableContract
     public array $translatedAttributes = ['name'];
     protected $guarded = [];
 
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll();

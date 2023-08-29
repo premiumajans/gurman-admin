@@ -15,6 +15,11 @@ class Category extends Model implements TranslatableContract
     public array $translatedAttributes = ['name', 'description', 'meta_title', 'meta_description'];
     protected $fillable = ['slug', 'is_home'];
 
+    public function product (): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class, 'parent_id');
