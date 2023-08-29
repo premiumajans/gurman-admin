@@ -118,6 +118,7 @@ return array (
   'login' => 'Log In',
   'logout' => 'Log Out',
   'mail' => 'Emails',
+  'manufacturer' => 'Manufacturers',
   'max-age' => 'Select Maximum Age',
   'max-salary' => 'Select Maximum Salary',
   'media' => '',
