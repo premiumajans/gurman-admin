@@ -118,6 +118,7 @@ return array (
   'login' => 'Daxil ol',
   'logout' => 'Çıxış et',
   'mail' => 'E-poçtlar',
+  'manufacturer' => 'İstehsalçılar',
   'max-age' => 'Maksimum yaş seçin',
   'max-salary' => 'Maksimum əmək haqqı seçin',
   'media' => 'Media',

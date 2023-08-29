@@ -2,7 +2,7 @@
     <div data-simplebar class="h-100" style="overflow-y: auto;">
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
-                {{--                {{ creation('Gallery','Gallery',true,false) }}--}}
+{{--                                {{ creation('Manufacturer','Manufacturer',true,false) }}--}}
                 <li>
                     <a href="{{ route('backend.dashboard') }}" class="waves-effect">
                         <i class="ri-home-4-fill"></i>
@@ -18,14 +18,6 @@
                         </a>
                     </li>
                 @endcan
-                @can('product index')
-                    <li>
-                        <a href="{{ route('backend.product.index') }}" class="waves-effect">
-                            <i class="fas fa-file"></i>
-                            <span>@lang('backend.product')</span>
-                        </a>
-                    </li>
-                @endcan
                 @can('categories index')
                     <li>
                         <a href="{{ route('backend.categories.index') }}" class="waves-effect">
@@ -34,11 +26,27 @@
                         </a>
                     </li>
                 @endcan
-                @can('faq index')
+                @can('product index')
                     <li>
-                        <a href="{{ route('backend.faq.index') }}" class="waves-effect">
-                            <i class="fas fa-question"></i>
-                            <span>@lang('backend.faq')</span>
+                        <a href="{{ route('backend.product.index') }}" class="waves-effect">
+                            <i class="fas fa-file"></i>
+                            <span>@lang('backend.product')</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('manufacturer index')
+                    <li>
+                        <a href="{{ route('backend.manufacturer.index') }}" class="waves-effect">
+                            <i class="fas fa-file"></i>
+                            <span>@lang('backend.manufacturer')</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('gallery index')
+                    <li>
+                        <a href="{{ route('backend.gallery.index') }}" class="waves-effect">
+                            <i class="fas fa-images"></i>
+                            <span>@lang('backend.gallery')</span>
                         </a>
                     </li>
                 @endcan
@@ -58,22 +66,14 @@
                 {{--                        </a>--}}
                 {{--                    </li>--}}
                 {{--                @endcan--}}
-                @can('about index')
-                    <li>
-                        <a href="{{ route('backend.about.index') }}" class="waves-effect">
-                            <i class="fas fa-info"></i>
-                            <span>@lang('backend.about')</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('gallery index')
-                    <li>
-                        <a href="{{ route('backend.gallery.index') }}" class="waves-effect">
-                            <i class="fas fa-images"></i>
-                            <span>@lang('backend.gallery')</span>
-                        </a>
-                    </li>
-                @endcan
+{{--                @can('about index')--}}
+{{--                    <li>--}}
+{{--                        <a href="{{ route('backend.about.index') }}" class="waves-effect">--}}
+{{--                            <i class="fas fa-info"></i>--}}
+{{--                            <span>@lang('backend.about')</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endcan--}}
                 @can('meta index')
                     <li>
                         <a href="{{ route('backend.meta.index') }}" class="waves-effect">

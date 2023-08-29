@@ -24,6 +24,7 @@ class PermissionsSeeder extends Seeder
             'meta',
             'product',
             'gallery',
+            'manufacturer'
 
         ];
         foreach ($permissions as $permission) {

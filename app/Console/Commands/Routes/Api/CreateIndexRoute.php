@@ -9,7 +9,7 @@ class CreateIndexRoute extends Command
 {
     protected $signature = 'create-api-route {name} {controller}';
     protected $description = '';
-    public function handle()
+    public function handle(): void
     {
         $name = $this->argument('name');
         $controller = $this->argument('controller');
