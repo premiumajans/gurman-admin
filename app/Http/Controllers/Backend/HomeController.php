@@ -14,7 +14,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd(Product::where('status',1)->get());
         return view('backend.dashboard');
     }
 
