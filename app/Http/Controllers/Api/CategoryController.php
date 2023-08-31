@@ -12,7 +12,7 @@ class CategoryController extends Controller
         if (Category::where('status', 1)->exists()) {
             return response()->json(['category' => Category::where('status', 1)->with('product')->get()], 200);
         } else {
-            return response()->json(['category' => 'Category-is-empty'], 404);
+            return response()->json(['category' => 'category-is-empty'], 404);
         }
     }
 
