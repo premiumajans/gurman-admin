@@ -15,4 +15,5 @@ Route::group(['name' => 'api'], function () {
     Route::get('/slider/{id}', [App\Http\Controllers\Api\SliderController::class, 'show']);
     Route::get('/gallery', [App\Http\Controllers\Api\GalleryController::class, 'index']);
     Route::get('/gallery/{id}', [App\Http\Controllers\Api\GalleryController::class, 'show']);
+    Route::post('/contact', [\App\Http\Controllers\Api\ContactController::class, 'index']);
 });
