@@ -67,7 +67,6 @@ class HomeController extends Controller
             $contact->name = $request->name;
             $contact->phone = $request->phone;
             $contact->email = $request->email;
-            $contact->subject = $request->subject;
             $contact->read_status = 0;
             $contact->message = $request->message;
             $contact->save();
@@ -75,7 +74,6 @@ class HomeController extends Controller
                 'name' => $contact->name,
                 'phone' => $contact->phone,
                 'email' => $contact->email,
-                'subject' => $contact->subject,
                 'msg' => $contact->message
             ];
             Mail::send('backend.mail.send', $data, function ($message) use ($receiver) {
