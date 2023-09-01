@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
 
 if (!function_exists('upload')) {
-    function upload($path, $file)
+    function upload($path, $file): string
     {
         try {
             if (!File::isDirectory(public_path('images/' . $path))) {
