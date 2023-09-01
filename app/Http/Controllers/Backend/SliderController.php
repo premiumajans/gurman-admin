@@ -40,14 +40,6 @@ class SliderController extends Controller
             $slider->photo = upload('slider', $request->file('photo'));
             $slider->order = $sliderOrder;
             $slider->save();
-            foreach (active_langs() as $lang) {
-                $sliderTranslation = new SliderTranslation();
-                $sliderTranslation->locale = $lang->code;
-                $sliderTranslation->slider_id = $slider->id;
-                $sliderTranslation->title = $request->title[$lang->code];
-                $sliderTranslation->alt = $request->alt[$lang->code] ?? null;
-                $sliderTranslation->save();
-            }
             alert()->success(__('messages.success'));
             return redirect(route('backend.slider.index'));
         } catch (Exception $e) {
@@ -68,10 +60,6 @@ class SliderController extends Controller
                         unlink(public_path($slider->photo));
                     }
                     $slider->photo = video_upload($request->file('photo'));
-                }
-                foreach (active_langs() as $lang) {
-                    $slider->translate($lang->code)->title = $request->title[$lang->code];
-                    $slider->translate($lang->code)->alt = $request->alt[$lang->code] ?? null;
                 }
                 $slider->save();
             });
