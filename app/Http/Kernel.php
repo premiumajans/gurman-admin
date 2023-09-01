@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-    protected $commands = [
+    protected array $commands = [
         \App\Console\Commands\view\CreateBlade::class,
         \App\Console\Commands\Controllers\FillControllerCommand::class,
         \App\Console\Commands\Routes\Api\CreateIndexRoute::class,
@@ -64,5 +64,9 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'api' => [
+            'throttle:60,1',
+            'bindings',
+        ]
     ];
 }

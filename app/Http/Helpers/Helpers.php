@@ -34,8 +34,7 @@ if (!function_exists('video_upload')) {
             if ($file->isValid()) {
                 $extension = $file->getClientOriginalExtension();
                 $filename = uniqid() . '.' . $extension;
-                $path = $file->move('videos', $filename);
-                return $path;
+                return $file->move('videos', $filename);
             }
             return null;
         } catch (Exception $e) {
