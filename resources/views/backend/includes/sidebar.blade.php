@@ -2,7 +2,6 @@
     <div data-simplebar class="h-100" style="overflow-y: auto;">
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
-{{--                                {{ creation('Manufacturer','Manufacturer',true,false) }}--}}
                 <li>
                     <a href="{{ route('backend.dashboard') }}" class="waves-effect">
                         <i class="ri-home-4-fill"></i>
@@ -50,30 +49,6 @@
                         </a>
                     </li>
                 @endcan
-                @can('partner index')
-                    <li>
-                        <a href="{{ route('backend.partner.index') }}" class="waves-effect">
-                            <i class="fas fa-link"></i>
-                            <span>@lang('backend.partner')</span>
-                        </a>
-                    </li>
-                @endcan
-                {{--                @can('blog index')--}}
-                {{--                    <li>--}}
-                {{--                        <a href="{{ route('backend.blog.index') }}" class="waves-effect">--}}
-                {{--                            <i class="fas fa-blog"></i>--}}
-                {{--                            <span>@lang('backend.blog')</span>--}}
-                {{--                        </a>--}}
-                {{--                    </li>--}}
-                {{--                @endcan--}}
-{{--                @can('about index')--}}
-{{--                    <li>--}}
-{{--                        <a href="{{ route('backend.about.index') }}" class="waves-effect">--}}
-{{--                            <i class="fas fa-info"></i>--}}
-{{--                            <span>@lang('backend.about')</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                @endcan--}}
                 @can('meta index')
                     <li>
                         <a href="{{ route('backend.meta.index') }}" class="waves-effect">

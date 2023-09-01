@@ -23,7 +23,6 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>@lang('backend.slug'):</th>
                                 @foreach(active_langs() as $lan)
                                 <th>@lang('backend.name')({{ $lan->code }}):</th>
                                 @endforeach
@@ -36,7 +35,6 @@
                             @foreach($categories as $category)
                             <tr>
                                 <td>{{ $category->id }}</td>
-                                <td>{{ $category->slug }}</td>
                                 @foreach(active_langs() as $lan)
                                 <td>{{ $category->translate($lan->code)->name ?? '' }}</td>
                                 @endforeach
