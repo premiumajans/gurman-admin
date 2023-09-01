@@ -16,7 +16,7 @@ class SliderSeeder extends Seeder
         if (File::isDirectory($imageFolderPath)) {
             $imageFiles = File::files($imageFolderPath);
             foreach ($imageFiles as $key => $imageFile) {
-                $uploadedImagePath = upload('slider/', $imageFile);
+                $uploadedImagePath = upload('slider', $imageFile);
                 $slider = new Slider();
                 $slider->photo = $uploadedImagePath;
                 $slider->order = $key + 1;
