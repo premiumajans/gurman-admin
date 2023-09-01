@@ -9,11 +9,10 @@ class SliderController extends Controller
 {
     public function index()
     {
-        if (Slider::where('status', 1)->exists()) {
-            return response()->json(['slider' => Slider::where('status', 1)->get()], 200);
-        } else {
-            return response()->json(['slider' => 'Slider-is-empty'], 404);
+        if (!Slider::where('status', 1)->exists()) {
+            return response()->json(['slider' => 'Slider is empty'], 404);
         }
+        return response()->json(['slider' => Slider::where('status', 1)->get()], 200);
     }
 
     public function show($id)
