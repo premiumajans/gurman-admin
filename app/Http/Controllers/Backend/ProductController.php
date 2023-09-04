@@ -57,7 +57,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         check_permission('product edit');
-        $product = Product::where('id', $id)->with('photos')->first();
+        $product = Product::where('id', $id)->first();
+        $categories = Category::where('status', 1)->get();
         return view('backend.product.edit', get_defined_vars());
     }
 

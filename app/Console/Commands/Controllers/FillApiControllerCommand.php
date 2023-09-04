@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 class FillApiControllerCommand extends Command
 {
     protected $signature = 'fill-api-controller {controller}';
-    protected $description = '';
     public function handle(): void
     {
         $controllerName = $this->argument('controller');
@@ -18,7 +17,6 @@ class FillApiControllerCommand extends Command
         $content = File::get($stubPath);
         $content = str_replace('$name', Str::lower($controllerName), $content);
         $content = str_replace('$controller', $controllerName, $content);
-
         if (File::exists($stubPath)) {
             $stubContent = File::get($stubPath);
             File::put($controllerPath, $content);
