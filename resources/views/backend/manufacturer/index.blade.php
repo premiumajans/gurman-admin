@@ -22,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>@lang('backend.slug'):</th>
+                                <th>@lang('backend.name'):</th>
                                 <th>@lang('backend.actions'):</th>
                             </tr>
                             </thead>
@@ -30,7 +30,7 @@
                             @foreach($manufacturers as $manufacturer)
                                 <tr>
                                     <td>{{ $manufacturer->id }}</td>
-                                    <td>{{ $manufacturer->slug }}</td>
+                                    <td>{{ $manufacturer->translate(app()->getLocale())->name ?? '' }}</td>
                                     @include('backend.templates.components.dt-settings',['variable' => 'manufacturer','value' => $manufacturer])
                                 </tr>
                             @endforeach

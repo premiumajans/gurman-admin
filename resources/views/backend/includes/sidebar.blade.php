@@ -49,14 +49,14 @@
                         </a>
                     </li>
                 @endcan
-                @can('meta index')
-                    <li>
-                        <a href="{{ route('backend.meta.index') }}" class="waves-effect">
-                            <i class="fas fa-tags"></i>
-                            <span>@lang('backend.meta')</span>
-                        </a>
-                    </li>
-                @endcan
+{{--                @can('meta index')--}}
+{{--                    <li>--}}
+{{--                        <a href="{{ route('backend.meta.index') }}" class="waves-effect">--}}
+{{--                            <i class="fas fa-tags"></i>--}}
+{{--                            <span>@lang('backend.meta')</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endcan--}}
                 @can('languages index')
                     <li>
                         <a href="{{ route('backend.site-languages.index') }}" class="waves-effect">
