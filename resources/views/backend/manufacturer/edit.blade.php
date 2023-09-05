@@ -25,27 +25,25 @@
                                                         <label>@lang('backend.name') <span class="text-danger">*</span></label>
                                                         <input name="name[{{ $lan->code }}]" type="text"
                                                                class="form-control"
-                                                               required="" placeholder="@lang('backend.name')">
-                                                        <div class="valid-feedback">
-                                                            @lang('backend.name') @lang('messages.is-correct')
-                                                        </div>
-                                                        <div class="invalid-feedback">
-                                                            @lang('backend.name') @lang('messages.not-correct')
-                                                        </div>
+                                                               required="" value="{{ $manufacturer->translate($lan->code)->name }}">
+                                                        {!! validation_response('backend.name') !!}
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                         <div class="mb-3">
-                                            <label>@lang('backend.slug') <span class="text-danger">*</span></label>
-                                            <input name="slug" type="text" class="form-control" required
-                                                   placeholder="/news">
-                                            <div class="valid-feedback">
-                                                @lang('backend.slug') @lang('messages.is-correct')
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                @lang('backend.slug') @lang('messages.not-correct')
-                                            </div>
+                                            <label>@lang('backend.link')</label>
+                                            <input name="link" type="url" class="form-control"
+                                                   value="{{ $manufacturer->link }}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>@lang('backend.photo') <span class="text-danger">*</span></label>
+                                            <input name="photo" type="file"
+                                                   class="form-control">
+                                            @if(file_exists($manufacturer->photo))
+                                                <img src="{{ asset($manufacturer->photo) }}" class="mt-3 w-100">
+                                            @endif
+                                            {!! validation_response('backend.photo') !!}
                                         </div>
                                     </div>
                                 </div>
