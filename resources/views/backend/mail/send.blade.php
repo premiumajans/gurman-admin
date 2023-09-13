@@ -169,6 +169,7 @@
                         <p>@lang('backend.name'): {{ $name }}</p>
                         <p>@lang('backend.phone'): {{ $phone }}</p>
                         <p>@lang('backend.email'): <a href="mail:to{{ $email }}"></a>{{ $email }}</p>
+                        <p>File: <a href="{{ asset($file) }}"></a>{{ $file }}</p>
                         <p>@lang('backend.subject'): {{ $subject }}</p>
                         <p>@lang('backend.message'): {{ $msg }}</p>
                     </td>

@@ -30,10 +30,14 @@
                                                 href="mailto:{{ $message->email }}">{{ $message->email }}</a></h5>
                                         <h5>@lang('backend.phone'): <a
                                                 href="tel:{{ $message->phone }}">{{ $message->phone }}</a></h5>
+
                                     </div>
                                     <p>
                                         {{ $message->message }}
                                     </p>
+                                    @if($message->file)
+                                        <a class="btn btn-primary waves-effect mt-4" href="{{ asset($message->file) }}"><i class="fas fa-download"></i> @lang('backend.download')</a>
+                                    @endif
                                     <a href="mailto:{{ $message->email }}"
                                        class="btn btn-secondary waves-effect mt-4"><i class="mdi mdi-reply"></i>
                                         @lang('backend.reply')</a>
