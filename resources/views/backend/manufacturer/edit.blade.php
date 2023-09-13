@@ -25,7 +25,8 @@
                                                         <label>@lang('backend.name') <span class="text-danger">*</span></label>
                                                         <input name="name[{{ $lan->code }}]" type="text"
                                                                class="form-control"
-                                                               required="" value="{{ $manufacturer->translate($lan->code)->name }}">
+                                                               required=""
+                                                               value="{{ $manufacturer->translate($lan->code)->name }}">
                                                         {!! validation_response('backend.name') !!}
                                                     </div>
                                                 </div>
