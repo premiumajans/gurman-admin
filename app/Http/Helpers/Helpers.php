@@ -27,6 +27,7 @@ if (!function_exists('upload')) {
     }
 }
 
+
 if (!function_exists('video_upload')) {
     function video_upload($file)
     {
@@ -44,7 +45,7 @@ if (!function_exists('video_upload')) {
 }
 
 if (!function_exists('pdf_upload')) {
-    function pdf_upload($file)
+    function pdf_upload($file): string|\Illuminate\Http\RedirectResponse
     {
         try {
             $img = $file;

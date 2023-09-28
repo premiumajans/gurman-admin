@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('product_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('locale')->index();
             $table->foreignId('product_id')->unsigned();
             $table->longText('name')->nullable();
             $table->longText('description')->nullable();
