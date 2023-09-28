@@ -18,7 +18,7 @@ class ContactController extends Controller
             $contact->name = $request->name;
             $contact->phone = $request->phone;
             $contact->email = $request->email;
-            $contact->file = upload('files', $request->file);
+            $contact->file = pdf_upload('files', $request->file);
             $contact->read_status = 0;
             $contact->message = $request->message;
             $contact->save();
