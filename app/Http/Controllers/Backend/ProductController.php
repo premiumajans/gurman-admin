@@ -38,18 +38,26 @@ class ProductController extends Controller
             $category->product()->save($product);
             if ($request->has('name') or $request->has('description')) {
                 foreach (active_langs() as $lang) {
-                    $translation = new ProductTranslation();
-                    $translation->locale = $lang->code;
-                    $translation->product_id = $product->id;
-                    $translation->name = $request->name[$lang->code] ?? null;
-                    $translation->description = $request->description[$lang->code] ?? null;
-                    $translation->save();
+                    $nameTranslation = $request->input('name.' . $lang->code);
+                    $descriptionTranslation = $request->input('description.' . $lang->code);
+                    if ($nameTranslation !== null or $descriptionTranslation !== null) {
+                        $translation = new ProductTranslation();
+                        $translation->locale = $lang->code;
+                        $translation->product_id = $product->id;
+                        if ($nameTranslation !== null) {
+                            $translation->name = $request->name[$lang->code] ?? null;
+                        }
+                        if ($descriptionTranslation !== null) {
+                            $translation->description = $request->description[$lang->code] ?? null;
+                        }
+                        $translation->save();
+                    }
                 }
             }
             alert()->success(__('messages.success'));
             return redirect(route('backend.product.index'));
         } catch (Exception $e) {
-            alert()->error(__('backend.error'));
+            alert()->error($e->getMessage());
             return redirect(route('backend.product.index'));
         }
     }
@@ -66,7 +74,7 @@ class ProductController extends Controller
     {
         check_permission('product edit');
         try {
-            $product = Product::where('id', $id)->with('photos')->first();
+            $product = Product::where('id', $id)->first();
             DB::transaction(function () use ($request, $product) {
                 if ($request->hasFile('photo')) {
                     if (file_exists($product->photo)) {
@@ -74,18 +82,45 @@ class ProductController extends Controller
                     }
                     $product->photo = upload('product', $request->file('photo'));
                 }
-                if ($request->has('name') or $request->has('description')) {
+                $product->category_id = $request->category_id;
+                if ($request->has('name') && $request->has('description')) {
                     foreach (active_langs() as $lang) {
-                        $product->translate($lang->code)->name = $request->name[$lang->code] ?? null;
-                        $product->translate($lang->code)->description = $request->description[$lang->code] ?? null;
+                        $nameTranslation = $request->input('name.' . $lang->code);
+                        $descriptionTranslation = $request->input('description.' . $lang->code);
+                        if (!$product->relationLoaded('translations')) {
+                            if ($nameTranslation !== null or $descriptionTranslation !== null) {
+                                $translation = new ProductTranslation();
+                                $translation->locale = $lang->code;
+                                $translation->product_id = $product->id;
+                                if ($nameTranslation !== null) {
+                                    $translation->name = $nameTranslation;
+                                }
+
+                                if ($descriptionTranslation !== null) {
+                                    $translation->description = $descriptionTranslation;
+                                }
+                                $translation->save();
+                            } else {
+                                $product->translations()->delete();
+                            }
+                        } else {
+                            if ($nameTranslation !== null) {
+                                $product->translate($lang->code)->name = $nameTranslation;
+                            }
+
+                            if ($descriptionTranslation !== null) {
+                                $product->translate($lang->code)->description = $descriptionTranslation;
+                            }
+                        }
                     }
                 }
+
                 $product->save();
             });
             alert()->success(__('messages.success'));
             return redirect()->back();
         } catch (Exception $e) {
-            alert()->error(__('backend.error'));
+            alert()->error($e->getMessage());
             return redirect()->back();
         }
     }

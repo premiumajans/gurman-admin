@@ -14,14 +14,8 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $array = [
-            '1' => 'kamar',
             '2' => 'ostan',
             '3' => 'cerk',
-            '4' => 'cerkChicken',
-            '5' => 'remit',
-            '6' => 'milch',
-            '7' => 'lotte',
-            '8' => 'torku',
         ];
         foreach ($array as $key => $arr) {
             $category = Category::find($key);
